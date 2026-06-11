@@ -1,20 +1,18 @@
 import { Link, useRouter } from "expo-router";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+
+import { View, Text, StyleSheet, Pressable, Button } from "react-native";
 
 export default function HomeScreen() {
+
   const router = useRouter()
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Index Screen</Text>
-
-
       <Link href="/secondIndex" push asChild>
         <Pressable style={styles.button} >
           <Text>Push to second</Text>
-
         </Pressable>
       </Link>
-
       <Pressable style={styles.button} onPress={() => {
         router.push("/fourthIndex")
       }}>
@@ -25,13 +23,13 @@ export default function HomeScreen() {
           <Text>Push to fourth</Text>
         </Pressable>
       </Link>
-      <Link href='/fifth/sixth' push asChild>
-        <Pressable style={styles.button}>
-
-          <Text style={styles.textBtn} >Pust to the Nasty Deep</Text>
-        </Pressable>
+      <Pressable style={styles.button} onPress={() => { router.push('/fifth') }}>
+        <Text>Push to fifth</Text>
+      </Pressable>
+      <Link href={{ pathname: '/secondIndex', params: { name: 'Marco' } }} push asChild>
+        <Button title="Push another time to /secondIndex" color='#1c3ed3c8' />
       </Link>
-
+      <Button title="Another greeting message" color='#1c3ed3c8' onPress={() => router.push({ pathname: '/secondIndex', params: { name: 'Mary' } })} />
     </View>
   );
 }
@@ -41,7 +39,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 16,
-    gap: 16
+    gap: 16,
+
   },
   heading: {
     fontSize: 24,
@@ -61,5 +60,15 @@ const styles = StyleSheet.create({
   textBtn: {
     fontWeight: 'bold',
     color: '#a73d3da4'
+  },
+  txt: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+
+  },
+  txtError: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'rgba(192, 43, 16, 1)'
   }
 });
