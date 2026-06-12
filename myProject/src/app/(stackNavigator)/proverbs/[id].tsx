@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 
 type Proverb = {
     id: string;
@@ -8,7 +8,7 @@ type Proverb = {
     source: string;
 };
 
-const proverbs: Proverb[] = [
+export const proverbs: Proverb[] = [
     { id: "1", proverb: "Il momento migliore per piantare un albero era 20 anni fa. Il secondo momento migliore è adesso.", source: "Proverbio Cinese" },
     { id: "2", proverb: "Non importa quanto vai piano, l'importante è non fermarsi.", source: "Confucio" },
     { id: "3", proverb: "Il successo non è definitivo, il fallimento non è fatale: ciò che conta è il coraggio di andare avanti.", source: "Winston Churchill" },
@@ -27,15 +27,21 @@ const ProverbsScreen = () => {
     if (!proverb) {
         return (
             <View style={styles.container}>
-                <Text style={styles.txtError}  >Error: {params.id} Not Found</Text>
+
+                <Text style={styles.txtError}  >Error: Not Found</Text>
             </View>
         )
     }
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>{proverb.proverb}</Text>
-            <Text>- {proverb.source}</Text>
-        </View>
+        <>
+
+            <View style={styles.container}>
+                <Stack.Screen options={{ title: proverb.source }} />
+                <Text style={styles.header}>"{proverb.proverb}"</Text>
+                <Text>- {proverb.source}</Text>
+            </View>
+
+        </>
     );
 };
 
@@ -57,5 +63,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: 'rgba(223, 32, 14, 1)'
-    }
+    },
+
 });

@@ -1,32 +1,13 @@
 import { Link, useRouter } from "expo-router";
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Button } from "react-native";
+import ProverbsScreen, { proverbs } from "./(stackNavigator)/proverbs/[id]";
+import ProverbList from "../components/ProverbList";
 
-export default function ThirdIndex() {
-  const router = useRouter()
+export default function ThirdScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Third Index Screen</Text>
-      <Link href='/' asChild style={styles.button} >
-        <Button title="Ritorna all'indice (replace) "></Button>
-      </Link>
-      <Link href='/' dismissTo asChild >
-        <Button title="Dismiss to Index" />
-      </Link>
-      <Link href='/secondIndex' replace asChild >
-        <Button title="Replace with /secondIndex" />
-      </Link>
-
-      {/* replace — crea nuova istanza di Index, count torna a 0 */}
-      {/* <Link href='/' asChild style={styles.button}>
-        <Button title="Ritorna all'indice (replace)" />
-      </Link> */}
-
-      {/* back() — torna all'istanza già nello stack, count rimane invariato */}
-      {/* <Pressable style={styles.button} onPress={() => router.back()}>
-        <Text>Torna indietro (back)</Text>
-      </Pressable> */}
-
-    </View>
+      <Text style={styles.heading}>Index Screen</Text>
+    </View >
   );
 }
 
@@ -35,8 +16,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 16,
-    backgroundColor: 'rgba(40, 193, 45, 1)',
-    gap: 10
+    gap: 16,
+
   },
   heading: {
     fontSize: 24,
@@ -51,6 +32,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 14,
     marginHorizontal: 50,
-  }
 
+  },
+  textBtn: {
+    fontWeight: 'bold',
+    color: '#a73d3da4'
+  },
+  txt: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+
+  },
+  txtError: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'rgba(192, 43, 16, 1)'
+  }
 });
