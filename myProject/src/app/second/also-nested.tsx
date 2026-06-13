@@ -1,17 +1,32 @@
 import { Link, useRouter } from "expo-router";
 import { View, Text, StyleSheet, Pressable, Button } from "react-native";
-import ProverbsScreen, { proverbs } from "./(stackNavigator)/proverbs/[id]";
-import ProverbList from "../components/ProverbList";
+import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
+import ProverbList from "../../components/ProverbList";
 
-export default function SecondScreen() {
+export default function AlsoNestedScreen() {
 
   const router = useRouter()
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Index Screen</Text>
+      <Text style={styles.heading}>Also Index Screen</Text>
+      {/* dismissAll chiude tutte le schermate in cui si è entrati e riporta alla prima 
+      schermata originaria dello stack(in questo caso a second/index) */}
+      <Pressable style={styles.button} onPress={() => router.dismissAll()}>
+        <Text>Return to the second tab</Text>
+      </Pressable>
+
     </View >
   );
 }
+/**
+ * /index 
+ * /second (stack)
+ *    /second/index
+ *    /second/nested
+ *    /second/also-nested
+*   /third
+*   /fourth
+ */
 
 const styles = StyleSheet.create({
   container: {
