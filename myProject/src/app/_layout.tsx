@@ -9,6 +9,17 @@ export default function RootLayout() {
     <>
       <StatusBar style="auto" />
       <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }} >
+        <Tabs.Screen
+          name="(home)"
+          options={{
+            title: 'Home',
+            tabBarLabel: 'Home',
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home-outline" size={size} color={color} />
+            )
+          }}
+        />
         <Tabs.Screen name="index"
           options={{
             title: 'Home',
@@ -21,6 +32,7 @@ export default function RootLayout() {
         <Tabs.Screen name="second"
           options={{
             title: 'second',
+            headerShown: false,
             tabBarLabel: 'Map',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="dice-2-outline" size={size} color={color} />

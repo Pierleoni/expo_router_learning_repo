@@ -1,6 +1,6 @@
 import { Link, useRouter } from "expo-router";
 import { View, Text, StyleSheet, Pressable, Button } from "react-native";
-import ProverbsScreen, { proverbs } from "./(stackNavigator)/proverbs/[id]";
+import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
 import ProverbList from "../components/ProverbList";
 
 export default function ThirdScreen() {

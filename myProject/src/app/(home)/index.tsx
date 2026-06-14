@@ -1,14 +1,19 @@
 
 import { View, Text, StyleSheet, Pressable, Button } from "react-native";
-import ProverbsScreen, { proverbs } from "./(stackNavigator)/proverbs/[id]";
-import ProverbList from "../components/ProverbList";
+// import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
+// import ProverbList from "../components/ProverbList";
+import { useRouter } from "expo-router";
 
 export default function IndexScreen() {
+  const routerToNestedHome = useRouter()
 
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Index Screen</Text>
+      <Pressable style={styles.button} onPress={() => routerToNestedHome.push('/home-nested')}>
+        <Text>Push to the nested home </Text>
+      </Pressable>
     </View >
   );
 }

@@ -1,7 +1,7 @@
 import { Link, useRouter } from "expo-router";
 import { View, Text, StyleSheet, Pressable, Button } from "react-native";
 import ProverbsScreen, { proverbs } from "./proverbs/[id]";
-import ProverbList from "../../components/ProverbList";
+import ProverbList from "../components/ProverbList";
 
 export default function HomeScreen() {
 

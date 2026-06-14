@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { proverbs } from '../app/(stackNavigator)/proverbs/[id]';
+import { proverbs } from '../(stackNavigator)/proverbs/[id]';
 
 const ProverbList = () => {
     return (
