@@ -1,19 +1,64 @@
 
-import { View, Text, StyleSheet, Pressable, Button } from "react-native";
+import { View, Text, StyleSheet, Pressable, Alert, Modal } from "react-native";
 // import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
 // import ProverbList from "../components/ProverbList";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 
 export default function IndexScreen() {
-  const routerToNestedHome = useRouter()
-
-
+  const router = useRouter();
+  const [modalVisible, setModalVisible] = useState(false);
+  const canGoBack = router.canGoBack()
+  const handleOpenAlert = () => {
+    Alert.alert('Warning!', 'Are you sure you want to proceed?', [
+      {
+        text: 'Cancel',
+        style: 'cancel'
+      },
+      {
+        text: 'Confirm',
+        style: 'destructive',
+        onPress: () => {
+          console.log("Let's go!")
+        }
+      }
+    ])
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Index Screen</Text>
-      <Pressable style={styles.button} onPress={() => routerToNestedHome.push('/home-nested')}>
+      <Pressable style={styles.button} onPress={() => router.push('/home-nested')}>
         <Text>Push to the nested home </Text>
       </Pressable>
+
+      {canGoBack ? (
+        <Pressable style={styles.btnBack} onPress={() => router.back()}>
+          <Text>Back</Text>
+        </Pressable>) : null}
+      <Pressable style={styles.btnAlert} onPress={handleOpenAlert}>
+        <Text style={styles.txt}>Open Alert</Text>
+      </Pressable>
+      <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
+        <Text>Apri modale</Text>
+      </Pressable>
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        // transparent; stessa cosa a scrivere transparent={true}
+        // presentationStyle="pageSheet"
+        onRequestClose={() => setModalVisible(false)}
+
+      >
+        <View style={styles.modalOuter}>
+          <View style={styles.modalInner}>
+            <Text>A custom styled modal!</Text>
+            <Pressable style={styles.button} onPress={() => setModalVisible(false)}>
+              <Text style={styles.textBtn}>Chiudi</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View >
   );
 }
@@ -45,6 +90,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#a73d3da4'
   },
+  btnBack: {
+    backgroundColor: '#e6dbdb9e',
+    borderRadius: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingHorizontal: 14,
+    marginHorizontal: 50,
+  },
   txt: {
     fontWeight: 'bold',
     textAlign: 'center',
@@ -54,5 +108,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'rgba(192, 43, 16, 1)'
-  }
+  },
+  btnAlert: {
+    backgroundColor: '#ce1a1aff',
+    borderRadius: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingHorizontal: 14,
+    marginHorizontal: 50,
+  },
+  modalOuter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalInner: {
+    backgroundColor: '#fff',
+    padding: 24,
+    borderRadius: 16,
+    alignItems: 'center',
+    gap: 12,
+    width: '80%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 8,
+  },
 });

@@ -12,6 +12,9 @@ export default function SecondScreen() {
       <Pressable style={styles.button} onPress={() => router.push('/second/nested')}>
         <Text>Push to the nested screen</Text>
       </Pressable>
+      <Pressable style={styles.btnBack} onPress={() => router.back()}>
+        <Text>Back</Text>
+      </Pressable>
     </View >
   );
 }
@@ -47,6 +50,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     marginHorizontal: 50,
 
+  },
+  btnBack: {
+    backgroundColor: '#e6dbdb9e',
+    borderRadius: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingHorizontal: 14,
+    marginHorizontal: 50,
   },
   textBtn: {
     fontWeight: 'bold',

@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 16,
     gap: 16,
+    backgroundColor: '#d20fc9ff'
 
   },
   heading: {

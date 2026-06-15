@@ -1,13 +1,19 @@
-import { Link, useRouter } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 import { View, Text, StyleSheet, Pressable, Button } from "react-native";
 import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
 import ProverbList from "../components/ProverbList";
 
 export default function FourthScreen() {
+  const router = useRouter()
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Index Screen</Text>
+      <Pressable style={styles.btnBack} onPress={() => router.back()}>
+        <Text>Back</Text>
+      </Pressable>
+
     </View >
   );
 }
@@ -34,6 +40,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     marginHorizontal: 50,
 
+  },
+  btnBack: {
+    backgroundColor: '#e6dbdb9e',
+    borderRadius: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingHorizontal: 14,
+    marginHorizontal: 50,
   },
   textBtn: {
     fontWeight: 'bold',
