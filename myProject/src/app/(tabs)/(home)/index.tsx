@@ -1,8 +1,9 @@
 
-import { View, Text, StyleSheet, Pressable, Alert, Modal } from "react-native";
+import { Alert, Button, Modal, Pressable, StyleSheet, Text, View } from "react-native";
 // import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
 // import ProverbList from "../components/ProverbList";
-import { useRouter } from "expo-router";
+
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 
 export default function IndexScreen() {
@@ -59,6 +60,12 @@ export default function IndexScreen() {
           </View>
         </View>
       </Modal>
+      <Link href='/modal' push asChild>
+        <Button title='Open router Modal' />
+      </Link>
+      <Link href='/model-with-stack' push asChild>
+        <Button title="Apri la Router Modal" />
+      </Link>
     </View >
   );
 }

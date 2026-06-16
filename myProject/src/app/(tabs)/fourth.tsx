@@ -1,7 +1,5 @@
-import { Link, router, useRouter } from "expo-router";
-import { View, Text, StyleSheet, Pressable, Button } from "react-native";
-import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
-import ProverbList from "../components/ProverbList";
+import { useRouter } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function FourthScreen() {
   const router = useRouter()
