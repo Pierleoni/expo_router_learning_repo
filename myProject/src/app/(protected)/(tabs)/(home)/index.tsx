@@ -2,7 +2,8 @@
 import { Alert, Button, Modal, Pressable, StyleSheet, Text, View } from "react-native";
 // import ProverbsScreen, { proverbs } from "../(stackNavigator)/proverbs/[id]";
 // import ProverbList from "../components/ProverbList";
-
+// src\app\(protected)\(tabs)\(home)\index.tsx
+// (protected)\(tabs)\(home)\index.tsx
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 

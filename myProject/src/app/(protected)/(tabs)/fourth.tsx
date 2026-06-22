@@ -1,7 +1,10 @@
+import { AuthContext } from "@/utils/authContext";
 import { useRouter } from "expo-router";
+import { useContext } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function FourthScreen() {
+  const authState = useContext(AuthContext)
   const router = useRouter()
 
 
@@ -10,6 +13,9 @@ export default function FourthScreen() {
       <Text style={styles.heading}>Index Screen</Text>
       <Pressable style={styles.btnBack} onPress={() => router.back()}>
         <Text>Back</Text>
+      </Pressable>
+      <Pressable style={styles.btnLogOut} onPress={authState.logOut}>
+        <Text style={styles.textBtn}>Log Out</Text>
       </Pressable>
 
     </View >
@@ -48,9 +54,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     marginHorizontal: 50,
   },
+  btnLogOut: {
+    backgroundColor: 'rgba(172, 16, 45, 0.68)',
+    borderRadius: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingHorizontal: 14,
+    marginHorizontal: 50,
+  },
   textBtn: {
     fontWeight: 'bold',
-    color: '#a73d3da4'
+    color: '#e1d8d8a4'
   },
   txt: {
     fontWeight: 'bold',
