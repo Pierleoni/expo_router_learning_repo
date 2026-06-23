@@ -4,7 +4,7 @@
     "slug": "myProject",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/router-icon.png",
     "scheme": "myproject",
     "userInterfaceStyle": "automatic",
     "ios": {

@@ -13,6 +13,11 @@ const ProtectedLayout = () => {
     //     return <Redirect href='/login' />
     // }
     const authState = useContext(AuthContext);
+    console.log(`isReady ${authState.isReady}`)
+    console.log(`isReady ${authState.isReady}`)
+    if (!authState.isReady) {
+        return null;
+    }
     if (!authState.isLoggedIn) {
         return <Redirect href='/login' />
     }
